@@ -16,15 +16,6 @@ Users can upload, store, and retrieve files securely. All files are encrypted be
 
 ---
 
-## Tech Stack
-
-- **Backend:** Python Flask
-- **Frontend:** HTML / CSS / JS
-- **Database:** MySQL / SQLite
-- **Encryption:** Python Cryptography (AES / Fernet)
-
----
-
 ## Installation
 
 1. Install dependencies:
