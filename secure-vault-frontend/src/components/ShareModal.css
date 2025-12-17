@@ -1,0 +1,120 @@
+/* Fullscreen modal wrapper */
+.share-modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  font-family: 'Courier New', monospace;
+}
+
+/* Dark blurred background */
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 25, 0.85);
+  backdrop-filter: blur(8px);
+  animation: fade-in 0.3s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Main modal card */
+.share-modal {
+  position: relative;
+  z-index: 3000;
+  width: 420px;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: rgba(10, 12, 25, 0.9);
+  border: 1px solid rgba(0, 255, 247, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.3);
+  backdrop-filter: blur(18px);
+  animation: pop-in 0.25s ease;
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Modal title */
+.modal-title {
+  color: #00fff7;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px #00fff7, 0 0 12px #0ff;
+}
+
+/* Input */
+.share-input {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+  background: rgba(0, 255, 247, 0.05);
+  border: 1px solid rgba(0, 255, 247, 0.4);
+  color: #00fff7;
+  transition: 0.3s;
+}
+
+.share-input:focus {
+  outline: none;
+  border-color: #0ff;
+  box-shadow: 0 0 10px #00fff7;
+  background: rgba(0, 255, 247, 0.1);
+}
+
+/* Buttons */
+.share-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  gap: 0.75rem;
+}
+
+.btn-close,
+.btn-share {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid;
+  transition: 0.25s;
+}
+
+/* Close button */
+.btn-close {
+  background: rgba(255, 0, 51, 0.05);
+  color: #ff3366;
+  border-color: #ff3366;
+}
+
+.btn-close:hover {
+  background: rgba(255, 0, 51, 0.2);
+  transform: scale(1.05);
+}
+
+/* Share button */
+.btn-share {
+  background: rgba(0, 255, 247, 0.1);
+  color: #00fff7;
+  border-color: #0ff;
+}
+
+.btn-share:hover {
+  background: rgba(0, 255, 247, 0.25);
+  transform: scale(1.05);
+}
+
+/* Status message */
+.share-status {
+  margin-top: 0.6rem;
+  color: #8af0ff;
+  text-align: center;
+  font-size: 0.9rem;
+}

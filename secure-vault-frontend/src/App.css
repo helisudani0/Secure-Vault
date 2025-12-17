@@ -1,0 +1,122 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f8fafc;
+}
+
+/* App container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom: 1px solid #334155;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #38bdf8; /* cyan accent */
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #f8fafc;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #38bdf8;
+}
+
+/* Auth forms */
+.auth-container {
+  background: rgba(30, 41, 59, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  max-width: 400px;
+  margin: 4rem auto;
+}
+
+.auth-container h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #38bdf8;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.6rem 0;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-container button:hover {
+  background: #0ea5e9;
+}
+
+/* Dashboard */
+.dashboard {
+  padding: 2rem;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard h1 {
+  color: #38bdf8;
+  margin-bottom: 1rem;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  background: #1e293b;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.file-list li:hover {
+  background: #334155;
+}

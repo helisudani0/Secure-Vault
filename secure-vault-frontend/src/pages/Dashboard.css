@@ -1,0 +1,135 @@
+.dashboard-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #0b0e19;
+  background-image: radial-gradient(circle at top, rgba(0,255,247,0.12), transparent 60%);
+  color: #e0e0e0;
+  font-family: "Roboto Mono", monospace;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #00fff7;
+  text-shadow: 0 0 8px #00fff7;
+}
+
+.loading-text {
+  text-align: center;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.success-text {
+  text-align: center;
+  color: #00fff7;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.error-text {
+  text-align: center;
+  color: #ff4f4f;
+  margin-bottom: 1rem;
+}
+
+/* Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+/* Cards */
+.dashboard-upload,
+.dashboard-files {
+  background: rgba(18, 20, 33, 0.9);
+  border: 1px solid rgba(0,255,247,0.25);
+  border-left: 4px solid #00fff7;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 24px rgba(0,255,247,0.25);
+  transition: 0.25s ease;
+}
+
+.dashboard-upload:hover,
+.dashboard-files:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px rgba(0,255,247,0.45);
+}
+
+.dashboard-upload h3,
+.dashboard-files h3 {
+  color: #00fff7;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px #00fff7;
+}
+
+/* File list layout */
+.file-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.file-card {
+  background: #121421;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #1e1f2e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.file-card:hover {
+  background: #1b1e2e;
+  box-shadow: 0 0 15px rgba(0,255,247,0.4);
+}
+
+/* Text */
+.file-name {
+  color: #00fff7;
+  font-weight: 600;
+}
+
+.file-meta {
+  color: #8888aa;
+  font-size: 0.8rem;
+}
+
+/* Actions */
+.file-actions button,
+.file-actions a {
+  padding: 0.45rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.file-actions button {
+  background: #00fff7;
+  color: #0f111a;
+}
+
+.file-actions button:hover {
+  background: #00c4be;
+  transform: translateY(-2px);
+}
+
+.file-actions a {
+  background: #444466;
+  color: #fff;
+  text-decoration: none;
+}
+
+.file-actions a:hover {
+  background: #56567a;
+  transform: translateY(-2px);
+}

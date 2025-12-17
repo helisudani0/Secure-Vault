@@ -1,0 +1,119 @@
+/* Container */
+.file-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* Empty state */
+.file-list-empty {
+  text-align: center;
+  color: #8888aa;
+  font-style: italic;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+/* File item container */
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(18, 20, 33, 0.85);
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 255, 247, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.file-item:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 0 30px rgba(0, 255, 247, 0.4);
+}
+
+/* File name */
+.file-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #00fff7;
+  text-shadow: 0 0 4px #00fff7;
+}
+
+/* Metadata */
+.file-meta {
+  font-size: 0.85rem;
+  color: #8888aa;
+  margin-top: 0.25rem;
+}
+
+/* Action button container */
+.file-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Download button */
+.btn-download {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: #00fff7;
+  color: #0f111a;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 15px rgba(0, 255, 247, 0.3);
+}
+
+.btn-download:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 255, 247, 0.5);
+}
+
+/* Share button */
+.btn-details {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 255, 247, 0.2);
+  color: #00fff7;
+  font-weight: 700;
+  border: 1px solid rgba(0, 255, 247, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-details:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(0, 255, 247, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 255, 247, 0.4);
+}
+.btn-delete {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-delete:hover {
+  background: #e60000;
+}
+.btn-delete {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-delete:hover {
+  background: #e60000;
+}
