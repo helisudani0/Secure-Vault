@@ -39,8 +39,6 @@ API.interceptors.response.use(
   }
 );
 
-// ✅ API functions with unique names
-
 // Upload a file
 export async function uploadFile(formData) {
   const res = await API.post("/files/upload/", formData, {
@@ -67,7 +65,7 @@ export async function downloadFile(fileId) {
   return res.data;
 }
 
-// ✅ New function: Download encrypted file (for decryption later)
+// New function: Download encrypted file (for decryption later)
 export async function downloadEncryptedFile(token, fileId) {
   const res = await fetch(`${API.defaults.baseURL}/files/${fileId}/download/`, {
     method: "GET",
