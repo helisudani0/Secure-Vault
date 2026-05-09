@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import {
-  generateRSAKeyPair,
-  wrapAESKey,
-  encryptFile,
-  generateRandomBytes,
-  deriveKeyFromPassword,
-  encryptPrivateKey,
+  generateFileKeyRaw,
+  encryptFileWithAesKey,
+  wrapKeyWithPublicKey,
+  arrayBufferToBase64,
 } from '../utils/crypto';
 import './FileUpload.css';
 
@@ -38,23 +36,30 @@ export default function FileUpload({ onUploadSuccess, privateKey, showButton = f
         reader.readAsArrayBuffer(file);
       });
 
-      // Encrypt file
-      const aesKey = generateRandomBytes(32); // 256-bit key
-      const iv = generateRandomBytes(16); // 128-bit IV
-      const encryptedData = await encryptFile(new Uint8Array(fileData), aesKey, iv);
+      setUploadProgress(20);
 
-      // Wrap AES key with public key
-      const publicKeyObj = privateKey;
-      const wrappedKey = await wrapAESKey(aesKey, publicKeyObj);
+      // Generate AES key for this file
+      const { key: aesKey, rawB64: aesKeyB64 } = await generateFileKeyRaw();
+
+      // Encrypt file with AES key
+      const { encrypted: encryptedData, ivB64 } = await encryptFileWithAesKey(
+        aesKey,
+        new Uint8Array(fileData)
+      );
 
       setUploadProgress(50);
+
+      // Wrap AES key with private key (RSA)
+      const wrappedKey = await wrapKeyWithPublicKey(aesKey, privateKey);
+
+      setUploadProgress(70);
 
       // Prepare form data
       const formData = new FormData();
       formData.append('name', file.name);
       formData.append('encrypted_data', new Blob([encryptedData]));
       formData.append('wrapped_key', wrappedKey);
-      formData.append('iv', btoa(String.fromCharCode(...iv)));
+      formData.append('iv', ivB64);
       formData.append('mime_type', file.type || 'application/octet-stream');
       formData.append('size', file.size);
 
@@ -70,7 +75,7 @@ export default function FileUpload({ onUploadSuccess, privateKey, showButton = f
           },
           onUploadProgress: (progressEvent) => {
             const percentCompleted = Math.round(
-              50 + (progressEvent.loaded / progressEvent.total) * 50
+              70 + (progressEvent.loaded / progressEvent.total) * 30
             );
             setUploadProgress(percentCompleted);
           },
@@ -142,7 +147,7 @@ export default function FileUpload({ onUploadSuccess, privateKey, showButton = f
         </button>
       )}
 
-      {/* Drag and drop area */}
+      {/* Upload progress modal */}
       {uploading && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-slate-800/80 backdrop-blur-xl rounded-2xl border border-white/20 p-8 max-w-md w-full mx-4 animate-scale-in text-center">
