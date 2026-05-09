@@ -1,6 +1,6 @@
 # auth_app/validators.py
 """
-Custom validators for Secure Vault
+Custom validators for Ciphra.
 """
 import re
 from django.core.exceptions import ValidationError

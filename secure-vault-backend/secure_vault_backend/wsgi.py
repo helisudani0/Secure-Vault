@@ -1,5 +1,5 @@
 """
-WSGI config for secure_vault_backend project.
+WSGI config for the Ciphra backend.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

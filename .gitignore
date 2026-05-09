@@ -56,13 +56,14 @@ env/
 
 # Node/npm/Frontend
 node_modules/
-package-lock.json
 npm-debug.log
 yarn-error.log
 dist/
 build/
 .next/
 .nuxt/
+playwright-report/
+test-results/
 
 # Database
 db.sqlite3
@@ -87,6 +88,7 @@ Thumbs.db
 *.temp
 temp/
 tmp/
+backups/
 
 # Documentation (Keep only README.md and important guides)
 BACKEND_API.md

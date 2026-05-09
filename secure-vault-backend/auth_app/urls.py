@@ -1,7 +1,14 @@
 # auth_app/urls.py
 
 from django.urls import path
-from .views import RegisterView, LoginView, ProfileView, TokenRefreshView, register
+from .views import (
+    LoginView,
+    ProfileView,
+    PublicKeyView,
+    RegisterView,
+    TokenRefreshView,
+    register,
+)
 from .views_auth_enhancements import (
     RequestEmailVerificationView,
     VerifyEmailView,
@@ -20,6 +27,7 @@ urlpatterns = [
     
     # Profile
     path('me/', ProfileView.as_view(), name='profile'),
+    path('public-key/<str:username>/', PublicKeyView.as_view(), name='public_key'),
     path('profile/update/', UpdateProfileView.as_view(), name='update_profile'),
     path('storage-usage/', StorageUsageView.as_view(), name='storage_usage'),
     

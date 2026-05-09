@@ -24,6 +24,20 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+  {
+    files: ['playwright.config.js', 'tests/e2e/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        sourceType: 'module',
+      },
     },
   },
 ])

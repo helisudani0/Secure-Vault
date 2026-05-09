@@ -1,8 +1,10 @@
 {
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.13",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13"
+  "name": "ciphra",
+  "private": true,
+  "scripts": {
+    "backup:postgres": "powershell -ExecutionPolicy Bypass -File scripts/backup-postgres.ps1",
+    "compose:config": "docker compose config",
+    "load:smoke": "node scripts/load-smoke.mjs",
+    "restore:postgres": "powershell -ExecutionPolicy Bypass -File scripts/restore-postgres.ps1"
   }
 }

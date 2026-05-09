@@ -1,36 +1,24 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import ShareModal from "../components/ShareModal";
-import "./FileDetail.css";
+import { Link, useParams } from "../router";
+import { ArrowLeft, FileText } from "lucide-react";
 
 export default function FileDetail() {
   const { id } = useParams();
-  
-  // Load files from local storage
-  const files = JSON.parse(localStorage.getItem("sv_files") || "[]");
-  const file = files.find((f) => f.id === id);
-
-  const [open, setOpen] = useState(false);
-
-  if (!file) {
-    return <div className="glass-card">File not found.</div>;
-  }
 
   return (
-    <div className="glass-card">
-      <h2 className="file-title">{file.name}</h2>
-
-      <div className="file-meta">
-        Uploaded: {new Date(file.createdAt).toLocaleString()}
-      </div>
-
-      <div className="file-actions">
-        <button className="btn-share" onClick={() => setOpen(true)}>
-          Share
-        </button>
-      </div>
-
-      {open && <ShareModal file={file} onClose={() => setOpen(false)} />}
-    </div>
+    <main className="app-main narrow">
+      <Link className="back-link" to="/dashboard">
+        <ArrowLeft size={16} aria-hidden="true" />
+        Back to dashboard
+      </Link>
+      <section className="empty-state">
+        <FileText size={42} aria-hidden="true" />
+        <h1>File details moved</h1>
+        <p>
+          File actions now live directly on the dashboard for speed and reliability. Selected file id:
+          {" "}
+          <code>{id}</code>
+        </p>
+      </section>
+    </main>
   );
 }

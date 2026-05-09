@@ -33,13 +33,17 @@ class CustomUser(AbstractUser):
     storage_used_bytes = models.BigIntegerField(default=0)
     
     # Metadata
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['email_verified'], name='auth_app_cu_email_v_idx'),
+            models.Index(fields=['account_locked'], name='auth_app_cu_locked_idx'),
+        ]
     
     def __str__(self):
         return self.username
@@ -57,10 +61,25 @@ class CustomUser(AbstractUser):
     
     def verify_email(self, token):
         """Verify email with token"""
+        if self.email_verification_token != token:
+            return False
+
+        if not self.email_verification_sent_at:
+            return False
+
+        time_diff = timezone.now() - self.email_verification_sent_at
+        if time_diff.total_seconds() > 24 * 60 * 60:
+            return False
+
         if self.email_verification_token == token:
             self.email_verified = True
             self.email_verification_token = None
-            self.save()
+            self.email_verification_sent_at = None
+            self.save(update_fields=[
+                'email_verified',
+                'email_verification_token',
+                'email_verification_sent_at',
+            ])
             return True
         return False
     

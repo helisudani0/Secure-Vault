@@ -1,5 +1,5 @@
 """
-ASGI config for secure_vault_backend project.
+ASGI config for the Ciphra backend.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

@@ -1,68 +1,51 @@
-import axios from "axios";
-import { getAuthHeader } from "./auth";
+import { api, uploadWithProgress } from "./client";
 
-const API = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/files",
-});
-
-// -----------------------------------------------------
-// 1) GET logged-in user's files  (FIXED!!!)
-// -----------------------------------------------------
-export async function getUserFiles(token) {
-  const res = await axios.get(
-    "http://127.0.0.1:8000/api/files/list/",   // <-- FIXED
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
-  return res.data;
+export async function listFiles() {
+  const response = await api.get("/files/list/");
+  return Array.isArray(response.data) ? response.data : response.data.results || [];
 }
 
-// -----------------------------------------------------
-// 2) GET files shared with the logged-in user
-// (your backend uses `/shared/`, so this one is correct)
-// -----------------------------------------------------
-export async function getSharedFiles(token) {
-  const res = await axios.get(
-    "http://127.0.0.1:8000/api/files/shared/",
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
-  return res.data;
+export async function uploadEncryptedFile({ encryptedBlob, filename, wrappedKey, iv, onProgress }) {
+  const formData = new FormData();
+  formData.append("file", encryptedBlob, filename);
+  formData.append("aes_key_owner_wrapped", wrappedKey);
+  formData.append("iv", iv);
+
+  const response = await uploadWithProgress("/files/upload/", formData, onProgress);
+  return response.data;
 }
 
-// -----------------------------------------------------
-// 3) DOWNLOAD encrypted file (raw blob)
-// -----------------------------------------------------
-export async function downloadEncryptedFile(token, fileId) {
-  const res = await axios.get(
-    `http://127.0.0.1:8000/api/files/download/${fileId}/`,
-    {
-      headers: { Authorization: `Bearer ${token}` },
-      responseType: "blob",
-    }
-  );
-  return res.data;
-}
-
-// -----------------------------------------------------
-// 4) DELETE file
-// -----------------------------------------------------
-export async function deleteFile(id) {
-  const res = await API.delete(`/delete/${id}/`, {
-    headers: getAuthHeader(),
+export async function downloadEncryptedFile(fileId) {
+  const response = await api.get(`/files/download/${fileId}/`, {
+    responseType: "blob",
   });
-  return res.data;
+
+  return {
+    blob: response.data,
+    wrappedKey: response.headers.get("x-wrapped-key"),
+    iv: response.headers.get("x-iv"),
+  };
 }
 
-// -----------------------------------------------------
-// 5) SHARE file
-// -----------------------------------------------------
-export async function shareFileFetch(token, fileId, recipient, wrappedKey) {
-  return axios.post(
-    `http://127.0.0.1:8000/api/files/share/${fileId}/`,
-    { recipient, wrapped_key: wrappedKey },
-    { headers: { Authorization: `Bearer ${token}` } }
-  );
+export async function getWrappedKey(fileId) {
+  const response = await api.get(`/files/wrapped-key/${fileId}/`);
+  return response.data;
+}
+
+export async function shareFile(fileId, recipientUsername, wrappedKeyForRecipient) {
+  const response = await api.post(`/files/share/${fileId}/`, {
+    recipient_username: recipientUsername,
+    wrapped_key_for_recipient: wrappedKeyForRecipient,
+  });
+  return response.data;
+}
+
+export async function deleteFile(fileId) {
+  const response = await api.delete(`/files/delete/${fileId}/`);
+  return response.data;
+}
+
+export async function listSharedFiles() {
+  const response = await api.get("/files/shared/");
+  return Array.isArray(response.data) ? response.data : response.data.results || [];
 }
