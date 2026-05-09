@@ -105,12 +105,12 @@ export default function Dashboard() {
 
       const response = await downloadEncryptedFile(file.id);
       const wrappedKey = response.data.wrapped_key;
-      const ivB64 = response.data.iv;
 
       const aesKey = await unwrapAESKey(wrappedKey, privateKey);
-      const decryptedBlob = await decryptFile(aesKey, ivB64, response.data.encrypted_data);
+      const decryptedData = await decryptFile(response.data.encrypted_data, aesKey);
 
-      const url = URL.createObjectURL(decryptedBlob);
+      const blob = new Blob([decryptedData], { type: file.mime_type });
+      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
       a.download = file.name;
