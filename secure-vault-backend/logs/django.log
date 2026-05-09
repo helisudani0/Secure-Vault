@@ -45,3 +45,13 @@ WARNING 2026-05-09 11:25:25,075 middleware 1616 17932 API Response: GET /docs - 
 WARNING 2026-05-09 11:25:25,075 log 1616 17932 Not Found: /docs
 WARNING 2026-05-09 11:25:25,075 basehttp 1616 17932 "GET /docs HTTP/1.1" 404 179
 INFO 2026-05-09 11:25:28,568 basehttp 1616 17932 "GET / HTTP/1.1" 200 43
+INFO 2026-05-09 11:32:54,949 basehttp 1616 20308 "GET / HTTP/1.1" 200 43
+WARNING 2026-05-09 11:33:14,046 middleware 1616 14248 API Response: GET /api/health/ - 404
+WARNING 2026-05-09 11:33:14,047 log 1616 14248 Not Found: /api/health/
+WARNING 2026-05-09 11:33:14,047 basehttp 1616 14248 "GET /api/health/ HTTP/1.1" 404 179
+WARNING 2026-05-09 11:33:25,705 middleware 1616 8712 API Response: POST /api/auth/signup/ - 400
+WARNING 2026-05-09 11:33:25,705 log 1616 8712 Bad Request: /api/auth/signup/
+WARNING 2026-05-09 11:33:25,706 basehttp 1616 8712 "POST /api/auth/signup/ HTTP/1.1" 400 47
+WARNING 2026-05-09 11:33:36,929 middleware 1616 8712 API Response: POST /api/auth/signup/ - 400
+WARNING 2026-05-09 11:33:36,930 log 1616 8712 Bad Request: /api/auth/signup/
+WARNING 2026-05-09 11:33:36,930 basehttp 1616 8712 "POST /api/auth/signup/ HTTP/1.1" 400 47
