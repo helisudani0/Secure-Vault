@@ -68,7 +68,10 @@ export async function importPrivateKeyFromBase64(privateKeyB64) {
 
 // =====================================================
 // PASSWORD PROTECTION (PBKDF2 + AES-GCM)
+// Note: Iterations MUST match backend (390,000) for decryption compatibility
 // =====================================================
+const PBKDF2_ITERATIONS = 390000;  // Must match backend: auth_app/serializers.py
+
 export async function encryptPrivateKeyWithPassword(privateKeyB64, password) {
   const rawPrivate = base64ToArrayBuffer(privateKeyB64);
   const enc = new TextEncoder();
@@ -87,7 +90,7 @@ export async function encryptPrivateKeyWithPassword(privateKeyB64, password) {
     {
       name: "PBKDF2",
       salt,
-      iterations: 200000,
+      iterations: PBKDF2_ITERATIONS,
       hash: "SHA-256",
     },
     pwKey,
@@ -132,7 +135,7 @@ export async function decryptPrivateKeyWithPassword(ciphertextB64, password, sal
     {
       name: "PBKDF2",
       salt,
-      iterations: 200000,
+      iterations: PBKDF2_ITERATIONS,
       hash: "SHA-256",
     },
     keyMaterial,

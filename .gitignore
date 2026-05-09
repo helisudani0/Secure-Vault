@@ -18,6 +18,23 @@ node_modules/
 dist/
 build/
 
+# Environment Variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
 # Others
 .DS_Store
 *.log
+
+# Database
+db.sqlite3
+*.sqlite3
+
+# Media files
+media/
+uploads/
+
+# Static files
+staticfiles/
