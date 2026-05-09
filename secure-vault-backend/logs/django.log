@@ -13,3 +13,6 @@ INFO 2026-05-09 11:05:26,268 basehttp 4868 13564 "OPTIONS /api/auth/signup/ HTTP
 WARNING 2026-05-09 11:05:26,323 middleware 4868 13564 API Response: POST /api/auth/signup/ - 401
 WARNING 2026-05-09 11:05:26,323 log 4868 13564 Unauthorized: /api/auth/signup/
 WARNING 2026-05-09 11:05:26,324 basehttp 4868 13564 "POST /api/auth/signup/ HTTP/1.1" 401 58
+INFO 2026-05-09 11:12:14,645 autoreload 11620 18212 Watching for file changes with StatReloader
+INFO 2026-05-09 11:15:56,074 autoreload 8784 18868 Watching for file changes with StatReloader
+INFO 2026-05-09 11:16:07,854 autoreload 1800 2532 Watching for file changes with StatReloader
