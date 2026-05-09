@@ -5,6 +5,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import FileDetail from "./pages/FileDetail";
+import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -18,32 +21,54 @@ export default function App() {
         <ToastProvider>
           <AuthProvider>
             <Router>
-              <Navbar />
-              <div className="max-w-6xl mx-auto p-6">
-                <Routes>
-                  <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Signup />} />
+              <Routes>
+                {/* Public routes */}
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
 
-                  <Route
-                    path="/dashboard"
-                    element={
-                      <ProtectedRoute>
-                        <Dashboard />
-                      </ProtectedRoute>
-                    }
-                  />
+                {/* Protected routes */}
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Navbar />
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
 
-                  <Route
-                    path="/file/:id"
-                    element={
-                      <ProtectedRoute>
-                        <FileDetail />
-                      </ProtectedRoute>
-                    }
-                  />
-                </Routes>
-              </div>
+                <Route
+                  path="/file/:id"
+                  element={
+                    <ProtectedRoute>
+                      <Navbar />
+                      <FileDetail />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/settings"
+                  element={
+                    <ProtectedRoute>
+                      <Settings />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
+                />
+
+                {/* Catch-all for 404 */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </Router>
           </AuthProvider>
         </ToastProvider>
