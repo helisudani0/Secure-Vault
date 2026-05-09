@@ -16,3 +16,15 @@ WARNING 2026-05-09 11:05:26,324 basehttp 4868 13564 "POST /api/auth/signup/ HTTP
 INFO 2026-05-09 11:12:14,645 autoreload 11620 18212 Watching for file changes with StatReloader
 INFO 2026-05-09 11:15:56,074 autoreload 8784 18868 Watching for file changes with StatReloader
 INFO 2026-05-09 11:16:07,854 autoreload 1800 2532 Watching for file changes with StatReloader
+INFO 2026-05-09 11:16:12,381 basehttp 8784 16836 "GET / HTTP/1.1" 200 43
+INFO 2026-05-09 11:16:16,099 basehttp 8784 14060 "OPTIONS /api/auth/signup/ HTTP/1.1" 200 0
+WARNING 2026-05-09 11:16:16,108 middleware 8784 14060 API Response: POST /api/auth/signup/ - 401
+WARNING 2026-05-09 11:16:16,109 log 8784 14060 Unauthorized: /api/auth/signup/
+WARNING 2026-05-09 11:16:16,109 basehttp 8784 14060 "POST /api/auth/signup/ HTTP/1.1" 401 58
+WARNING 2026-05-09 11:16:48,080 middleware 1800 11504 API Response: POST /api/auth/signup/ - 401
+WARNING 2026-05-09 11:16:48,080 log 1800 11504 Unauthorized: /api/auth/signup/
+WARNING 2026-05-09 11:16:48,080 basehttp 1800 11504 "POST /api/auth/signup/ HTTP/1.1" 401 58
+INFO 2026-05-09 11:17:16,917 autoreload 1800 2532 C:\Users\heli3\secure-vault\secure-vault-backend\auth_app\views.py changed, reloading.
+INFO 2026-05-09 11:17:17,577 autoreload 18416 1212 Watching for file changes with StatReloader
+INFO 2026-05-09 11:17:22,025 autoreload 18416 1212 C:\Users\heli3\secure-vault\secure-vault-backend\auth_app\views.py changed, reloading.
+INFO 2026-05-09 11:17:22,702 autoreload 16824 10128 Watching for file changes with StatReloader

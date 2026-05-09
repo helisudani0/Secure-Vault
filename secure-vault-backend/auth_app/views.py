@@ -36,6 +36,8 @@ def register(request):
 # User Registration
 # ----------------------
 class RegisterView(APIView):
+    permission_classes = [permissions.AllowAny]
+    
     def post(self, request):
         # Rate limiting: 3 signups per hour per IP
         client_ip = _get_client_ip(request)
@@ -77,6 +79,8 @@ class RegisterView(APIView):
 # User Login
 # ----------------------
 class LoginView(APIView):
+    permission_classes = [permissions.AllowAny]
+    
     def post(self, request):
         # Rate limiting: 5 login attempts per hour per IP
         client_ip = _get_client_ip(request)
