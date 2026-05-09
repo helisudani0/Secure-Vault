@@ -3,7 +3,51 @@
 Validators for file operations
 """
 import base64
+import os
 from django.core.exceptions import ValidationError
+
+
+def validate_filename(filename):
+    """Validate filename for security"""
+    if not filename:
+        raise ValidationError("Filename is required")
+    
+    if len(filename) > 255:
+        raise ValidationError("Filename is too long (max 255 characters)")
+    
+    # Prevent directory traversal
+    if ".." in filename or "/" in filename or "\\" in filename:
+        raise ValidationError("Invalid filename - contains directory separators")
+    
+    # Prevent null bytes
+    if "\x00" in filename:
+        raise ValidationError("Invalid filename - contains null bytes")
+    
+    return filename
+
+
+def sanitize_filename(filename):
+    """Sanitize filename by removing potentially dangerous characters"""
+    # Remove any path components
+    filename = os.path.basename(filename)
+    
+    # Remove null bytes
+    filename = filename.replace("\x00", "")
+    
+    # Remove leading/trailing dots and spaces
+    filename = filename.strip(". ")
+    
+    # Ensure filename is not empty after sanitization
+    if not filename:
+        filename = "file"
+    
+    # Truncate if too long
+    if len(filename) > 255:
+        name, ext = os.path.splitext(filename)
+        max_name_len = 255 - len(ext)
+        filename = name[:max_name_len] + ext
+    
+    return filename
 
 
 def validate_wrapped_key(wrapped_key_str):

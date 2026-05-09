@@ -1,0 +1,15 @@
+INFO 2026-05-09 10:58:30,722 autoreload 20036 16664 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:06,112 autoreload 20036 16664 C:\Users\heli3\secure-vault\secure-vault-backend\files_app\validators.py changed, reloading.
+INFO 2026-05-09 11:01:06,740 autoreload 7508 796 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:10,864 autoreload 10908 12944 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:30,191 autoreload 7508 796 C:\Users\heli3\secure-vault\secure-vault-backend\auth_app\migrations\0003_customuser_auth_enhancements.py changed, reloading.
+INFO 2026-05-09 11:01:30,670 autoreload 10908 12944 C:\Users\heli3\secure-vault\secure-vault-backend\auth_app\migrations\0003_customuser_auth_enhancements.py changed, reloading.
+INFO 2026-05-09 11:01:30,841 autoreload 19304 3760 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:31,373 autoreload 20308 5548 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:43,637 autoreload 15248 10316 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:54,232 autoreload 4868 1984 Watching for file changes with StatReloader
+INFO 2026-05-09 11:01:58,114 basehttp 15248 18332 "GET / HTTP/1.1" 200 43
+INFO 2026-05-09 11:05:26,268 basehttp 4868 13564 "OPTIONS /api/auth/signup/ HTTP/1.1" 200 0
+WARNING 2026-05-09 11:05:26,323 middleware 4868 13564 API Response: POST /api/auth/signup/ - 401
+WARNING 2026-05-09 11:05:26,323 log 4868 13564 Unauthorized: /api/auth/signup/
+WARNING 2026-05-09 11:05:26,324 basehttp 4868 13564 "POST /api/auth/signup/ HTTP/1.1" 401 58

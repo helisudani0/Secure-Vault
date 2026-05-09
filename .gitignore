@@ -1,40 +1,114 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Virtual Environment
-venv/
-ENV/
-env/
-
-# IDE files
-.vscode/
-.idea/
-
-Node / Frontend
-node_modules/
-dist/
-build/
-
-# Environment Variables
+# Environment Variables (STRICT - NO SECRETS)
 .env
 .env.local
 .env.*.local
-!.env.example
+.env.production
+.env.development
+*.key
+*.pem
+secrets.json
 
-# Others
-.DS_Store
-*.log
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+env/
+*.venv
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+.project
+.pydevproject
+.settings/
+
+# Node/npm/Frontend
+node_modules/
+package-lock.json
+npm-debug.log
+yarn-error.log
+dist/
+build/
+.next/
+.nuxt/
 
 # Database
 db.sqlite3
 *.sqlite3
+*.sqlite
 
-# Media files
+# Media & Static (Generated)
 media/
 uploads/
-
-# Static files
+static/
 staticfiles/
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Backup & Temp
+*.bak
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Documentation (Keep only README.md)
+BACKEND_API.md
+COMPLETION_REPORT.md
+CONTINUATION_GUIDE.md
+FINAL_DELIVERY_SUMMARY.md
+MODERNIZATION_STATUS.md
+NEXT_PHASE3_TODOS.md
+PHASE2_COMPLETE.md
+PHASE3_COMPLETE.md
+PHASE3_PROGRESS.md
+PHASE4_IMPLEMENTATION_STATUS.md
+PHASE4_5_FINAL_SUMMARY.md
+PHASE4_5_IMPLEMENTATION_COMPLETE.md
+PHASE4_5_PLAN.md
+POWERSHELL_INSTALL.md
+PRODUCTION_DEPLOYMENT.md
+PROGRESS_REPORT.md
+README_MODERNIZATION.md
+SECURITY_IMPROVEMENTS.md
+SESSION2_SUMMARY.md
+SESSION3_COMPLETION.md
+SETUP_COMMANDS.md
+TRANSFORMATION_COMPLETE.md
+plan.md
