@@ -27,7 +27,11 @@ jobs:
           cache-dependency-path: secure-vault-frontend/package-lock.json
       - uses: actions/configure-pages@v5
       - run: npm ci
-      - run: VITE_BASE_PATH=/Secure-Vault/ npm run build
+      - name: Build frontend
+        run: npm run build
+        env:
+          VITE_BASE_PATH: /Secure-Vault/
+          VITE_API_URL: ${{ vars.BACKEND_API_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: secure-vault-frontend/dist
