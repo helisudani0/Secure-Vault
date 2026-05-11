@@ -1,6 +1,6 @@
 # auth_app/validators.py
 """
-Custom validators for Ciphra.
+Custom validators for Privora.
 """
 import re
 from django.core.exceptions import ValidationError

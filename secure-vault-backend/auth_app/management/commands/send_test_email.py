@@ -19,9 +19,9 @@ class Command(BaseCommand):
             raise CommandError("Recipient must be a valid email address") from exc
 
         sent_count = send_mail(
-            subject="Ciphra email delivery test",
+            subject="Privora email delivery test",
             message=(
-                "Ciphra can send transactional email from this environment.\n\n"
+                "Privora can send transactional email from this environment.\n\n"
                 "If you received this, verification and recovery emails can be delivered."
             ),
             from_email=settings.DEFAULT_FROM_EMAIL,

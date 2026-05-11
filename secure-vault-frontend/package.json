@@ -1,5 +1,5 @@
 {
-  "name": "ciphra-frontend",
+  "name": "privora-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -29,7 +29,7 @@
     "globals": "^16.3.0",
     "vite": "^7.1.2"
   },
-  "description": "Ciphra frontend built with React and Vite.",
+  "description": "Privora frontend built with React and Vite.",
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",

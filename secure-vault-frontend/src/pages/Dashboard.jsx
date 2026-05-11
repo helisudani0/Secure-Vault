@@ -270,7 +270,7 @@ export default function Dashboard() {
         <div>
           <p className="eyebrow">Encrypted workspace</p>
           <h1>Your private command center</h1>
-          <p className="muted">Upload any file type, let Ciphra sort it, and decrypt or share only when your vault is unlocked.</p>
+          <p className="muted">Upload any file type, let Privora sort it, and decrypt or share only when your vault is unlocked.</p>
         </div>
         <div className="header-actions">
           <button className="secondary-button" type="button" onClick={loadFiles}>

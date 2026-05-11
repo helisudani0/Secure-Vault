@@ -1,8 +1,8 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 
-const ACCESS_TOKEN_KEY = "ciphra_access";
-const REFRESH_TOKEN_KEY = "ciphra_refresh";
-const USER_KEY = "ciphra_user";
+const ACCESS_TOKEN_KEY = "privora_access";
+const REFRESH_TOKEN_KEY = "privora_refresh";
+const USER_KEY = "privora_user";
 
 export const sessionStore = {
   getAccessToken() {
@@ -166,7 +166,7 @@ function parseXhrError(status, data) {
 export function parseApiError(error) {
   if (!error) return "Something went wrong.";
   if (error.message === "Network Error" || error.message === "Failed to fetch") {
-    return "Cannot reach the Ciphra API.";
+    return "Cannot reach the Privora API.";
   }
 
   const data = error.response?.data;

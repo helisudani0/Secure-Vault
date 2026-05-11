@@ -7,10 +7,10 @@ from django.views.decorators.http import require_POST
 from django.db import connection
 from django.http import JsonResponse
 
-logger = logging.getLogger("ciphra.client")
+logger = logging.getLogger("privora.client")
 
 def home(request):
-    return JsonResponse({"message": "Ciphra Backend Running"})
+    return JsonResponse({"message": "Privora Backend Running"})
 
 
 def health(request):
@@ -27,7 +27,7 @@ def health(request):
         checks["database"] = False
 
     try:
-        cache_key = "ciphra-health"
+        cache_key = "privora-health"
         cache.set(cache_key, "ok", timeout=10)
         checks["cache"] = cache.get(cache_key) == "ok"
     except Exception:

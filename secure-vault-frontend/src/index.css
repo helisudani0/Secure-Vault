@@ -41,6 +41,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background: rgba(52, 211, 153, 0.32);
+  color: #f8fafc;
+}
+
 html,
 body,
 #root {
@@ -230,10 +235,35 @@ code {
 }
 
 .logo-core {
-  inset: 16px 13px 15px 14px;
+  left: 18px;
+  top: 13px;
+  width: 24px;
+  height: 36px;
+}
+
+.logo-core::before,
+.logo-core::after {
+  content: "";
+  position: absolute;
+}
+
+.logo-core::before {
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 21px;
   border: 3px solid rgba(255, 255, 255, 0.94);
-  border-right-color: transparent;
-  border-radius: 8px;
+  border-left-width: 4px;
+  border-radius: 8px 12px 12px 8px;
+}
+
+.logo-core::after {
+  left: 0;
+  top: 1px;
+  bottom: 0;
+  width: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .logo-plane {
@@ -253,12 +283,23 @@ code {
 }
 
 .logo-cut {
-  right: 12px;
-  bottom: 11px;
-  width: 11px;
-  height: 11px;
+  right: 13px;
+  bottom: 12px;
+  width: 10px;
+  height: 10px;
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.16);
+}
+
+.logo-cut::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 2px;
+  height: 8px;
+  border-radius: 999px;
+  background: inherit;
 }
 
 .brand-lockup.compact .brand-mark,
@@ -268,8 +309,22 @@ code {
 }
 
 .brand .logo-core {
-  inset: 10px 9px 10px 10px;
+  left: 12px;
+  top: 8px;
+  width: 16px;
+  height: 24px;
+}
+
+.brand .logo-core::before {
+  width: 16px;
+  height: 14px;
   border-width: 2px;
+  border-left-width: 3px;
+  border-radius: 6px 9px 9px 6px;
+}
+
+.brand .logo-core::after {
+  width: 3px;
 }
 
 .brand .logo-plane-a {
@@ -283,8 +338,15 @@ code {
 .brand .logo-cut {
   right: 8px;
   bottom: 7px;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
+}
+
+.brand .logo-cut::after {
+  left: 3px;
+  top: 6px;
+  width: 1px;
+  height: 5px;
 }
 
 .trust-list {

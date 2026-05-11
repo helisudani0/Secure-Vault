@@ -65,9 +65,9 @@ class RequestEmailVerificationView(APIView):
 
             verification_url = f"{settings.FRONTEND_URL.rstrip('/')}/verify-email?token={token}"
             send_mail(
-                subject="Verify your Ciphra email",
+                subject="Verify your Privora email",
                 message=(
-                    "Verify your Ciphra email address by opening this link:\n\n"
+                    "Verify your Privora email address by opening this link:\n\n"
                     f"{verification_url}\n\n"
                     "This link expires in 24 hours. If you did not request this, you can ignore it."
                 ),
@@ -169,9 +169,9 @@ class RequestPasswordResetView(APIView):
 
             reset_url = f"{settings.FRONTEND_URL.rstrip('/')}/reset-password?token={token}"
             send_mail(
-                subject="Reset your Ciphra password",
+                subject="Reset your Privora password",
                 message=(
-                    "Reset your Ciphra password by opening this link:\n\n"
+                    "Reset your Privora password by opening this link:\n\n"
                     f"{reset_url}\n\n"
                     "This link expires in 1 hour. If you did not request this, you can ignore it."
                 ),

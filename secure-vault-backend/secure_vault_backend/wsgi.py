@@ -1,5 +1,5 @@
 """
-WSGI config for the Ciphra backend.
+WSGI config for the Privora backend.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

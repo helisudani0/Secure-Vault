@@ -13,7 +13,7 @@ export class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    console.error("Ciphra UI error", error, info);
+    console.error("Privora UI error", error, info);
     reportClientError(error, info);
   }
 

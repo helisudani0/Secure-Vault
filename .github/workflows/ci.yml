@@ -52,7 +52,7 @@ jobs:
       SECRET_KEY: ci-secret-key
       EMAIL_BACKEND: django.core.mail.backends.smtp.EmailBackend
       EMAIL_HOST: smtp.example.com
-      DEFAULT_FROM_EMAIL: Ciphra <noreply@example.com>
+      DEFAULT_FROM_EMAIL: Privora <noreply@example.com>
     steps:
       - uses: actions/checkout@v4
       - run: docker compose config

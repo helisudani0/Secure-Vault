@@ -1,5 +1,5 @@
 {
-  "name": "ciphra",
+  "name": "privora",
   "private": true,
   "scripts": {
     "backup:postgres": "powershell -ExecutionPolicy Bypass -File scripts/backup-postgres.ps1",

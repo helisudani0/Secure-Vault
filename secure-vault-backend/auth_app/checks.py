@@ -19,7 +19,7 @@ def production_email_check(app_configs, **kwargs):
         issues.append(Error(
             'Production email is configured with a development-only backend.',
             hint='Set EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend and configure SMTP credentials.',
-            id='ciphra.E001',
+            id='privora.E001',
         ))
 
     if settings.EMAIL_BACKEND == 'django.core.mail.backends.smtp.EmailBackend':
@@ -32,7 +32,7 @@ def production_email_check(app_configs, **kwargs):
             issues.append(Error(
                 f'Production SMTP email configuration is incomplete: {", ".join(missing)}.',
                 hint='Configure a real transactional email provider before launch.',
-                id='ciphra.E002',
+                id='privora.E002',
             ))
 
     if settings.USE_S3_STORAGE:
@@ -49,7 +49,7 @@ def production_email_check(app_configs, **kwargs):
             issues.append(Error(
                 f'Production object storage configuration is incomplete: {", ".join(missing_storage)}.',
                 hint='Configure S3-compatible object storage credentials and a private bucket.',
-                id='ciphra.E003',
+                id='privora.E003',
             ))
 
     return issues
@@ -65,14 +65,14 @@ def production_operational_check(app_configs, **kwargs):
         issues.append(Warning(
             'CACHE_URL is not set; auth rate limits will use per-process memory.',
             hint='Use Redis in production so rate limits work across workers.',
-            id='ciphra.W001',
+            id='privora.W001',
         ))
 
     if not settings.SENTRY_DSN:
         issues.append(Warning(
             'SENTRY_DSN is not set.',
             hint='Configure Sentry or another error monitor before public launch.',
-            id='ciphra.W002',
+            id='privora.W002',
         ))
 
     return issues

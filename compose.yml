@@ -1,16 +1,16 @@
-name: ciphra
+name: privora
 
 services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_DB: ${DB_NAME:-ciphra}
-      POSTGRES_USER: ${DB_USER:-ciphra}
+      POSTGRES_DB: ${DB_NAME:-privora}
+      POSTGRES_USER: ${DB_USER:-privora}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-change-me}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-ciphra} -d ${DB_NAME:-ciphra}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-privora} -d ${DB_NAME:-privora}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -30,7 +30,7 @@ services:
     image: minio/minio:RELEASE.2025-04-22T22-12-26Z
     command: server /data --console-address ":9001"
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-ciphra}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-privora}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-change-me-minio-password}
     volumes:
       - minio_data:/data
@@ -43,14 +43,14 @@ services:
     depends_on:
       - minio
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-ciphra}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-privora}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-change-me-minio-password}
-      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME:-ciphra-files}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME:-privora-files}
     entrypoint: >
       /bin/sh -c "
-      until /usr/bin/mc alias set local http://minio:9000 ${MINIO_ROOT_USER:-ciphra} ${MINIO_ROOT_PASSWORD:-change-me-minio-password}; do sleep 2; done;
-      /usr/bin/mc mb --ignore-existing local/${AWS_STORAGE_BUCKET_NAME:-ciphra-files};
-      /usr/bin/mc anonymous set none local/${AWS_STORAGE_BUCKET_NAME:-ciphra-files};
+      until /usr/bin/mc alias set local http://minio:9000 ${MINIO_ROOT_USER:-privora} ${MINIO_ROOT_PASSWORD:-change-me-minio-password}; do sleep 2; done;
+      /usr/bin/mc mb --ignore-existing local/${AWS_STORAGE_BUCKET_NAME:-privora-files};
+      /usr/bin/mc anonymous set none local/${AWS_STORAGE_BUCKET_NAME:-privora-files};
       "
 
   backend:
@@ -64,8 +64,8 @@ services:
       CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost}
       FRONTEND_URL: ${FRONTEND_URL:-http://localhost}
       DB_ENGINE: django.db.backends.postgresql
-      DB_NAME: ${DB_NAME:-ciphra}
-      DB_USER: ${DB_USER:-ciphra}
+      DB_NAME: ${DB_NAME:-privora}
+      DB_USER: ${DB_USER:-privora}
       DB_PASSWORD: ${DB_PASSWORD:-change-me}
       DB_HOST: postgres
       DB_PORT: 5432
@@ -76,7 +76,7 @@ services:
       SECURE_HSTS_INCLUDE_SUBDOMAINS: ${SECURE_HSTS_INCLUDE_SUBDOMAINS:-False}
       SECURE_HSTS_PRELOAD: ${SECURE_HSTS_PRELOAD:-False}
       EMAIL_BACKEND: ${EMAIL_BACKEND:-django.core.mail.backends.console.EmailBackend}
-      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-Ciphra <noreply@localhost>}
+      DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-Privora <noreply@localhost>}
       EMAIL_HOST: ${EMAIL_HOST:-localhost}
       EMAIL_PORT: ${EMAIL_PORT:-25}
       EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
@@ -86,9 +86,9 @@ services:
       EMAIL_TIMEOUT: ${EMAIL_TIMEOUT:-10}
       CACHE_URL: ${CACHE_URL:-redis://redis:6379/1}
       USE_S3_STORAGE: ${USE_S3_STORAGE:-False}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-ciphra}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-privora}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-change-me-minio-password}
-      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME:-ciphra-files}
+      AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME:-privora-files}
       AWS_S3_REGION_NAME: ${AWS_S3_REGION_NAME:-us-east-1}
       AWS_S3_ENDPOINT_URL: ${AWS_S3_ENDPOINT_URL:-http://minio:9000}
       AWS_S3_CUSTOM_DOMAIN: ${AWS_S3_CUSTOM_DOMAIN:-}

@@ -5,12 +5,12 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$dbUser = if ($env:DB_USER) { $env:DB_USER } else { "ciphra" }
-$dbName = if ($env:DB_NAME) { $env:DB_NAME } else { "ciphra" }
+$dbUser = if ($env:DB_USER) { $env:DB_USER } else { "privora" }
+$dbName = if ($env:DB_NAME) { $env:DB_NAME } else { "privora" }
 $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
 
 New-Item -ItemType Directory -Force -Path $OutputDir | Out-Null
-$backupPath = Join-Path $OutputDir "ciphra-$timestamp.sql"
+$backupPath = Join-Path $OutputDir "privora-$timestamp.sql"
 
 docker compose exec -T $Service pg_dump `
   --username $dbUser `

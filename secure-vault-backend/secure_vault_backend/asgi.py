@@ -1,5 +1,5 @@
 """
-ASGI config for the Ciphra backend.
+ASGI config for the Privora backend.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

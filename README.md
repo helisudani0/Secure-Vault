@@ -1,8 +1,6 @@
-# Ciphra
+# Privora
 
-Ciphra is a full-stack encrypted workspace for private files, secure sharing, password storage, and account recovery.
-
-The free launch-domain target is `ciphra.is-a.dev`.
+Privora is a full-stack encrypted workspace for private files, secure sharing, password storage, and account recovery.
 
 ## What It Does
 
@@ -18,7 +16,7 @@ The free launch-domain target is `ciphra.is-a.dev`.
 Local development stores uploaded encrypted files on disk D:
 
 ```text
-D:\CiphraStorage
+D:\PrivoraStorage
 ```
 
 Upload paths are organized by user and type:

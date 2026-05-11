@@ -18,15 +18,15 @@ import {
   Zap,
 } from "lucide-react";
 
-import { BRAND_DOMAIN, BRAND_NAME, BRAND_SHORT_COPY, BRAND_TAGLINE } from "../brand";
+import { BRAND_NAME, BRAND_SHORT_COPY, BRAND_TAGLINE } from "../brand";
 import BrandLogo from "../components/BrandLogo";
 import { Link } from "../router";
 
 const proofPoints = [
-  ["Any file, instantly sorted", "Upload photos, PDFs, documents, archives, code, audio, video, and anything else you need to keep private."],
-  ["Password locker", "Save website logins with encrypted usernames, passwords, and notes in the same vault key system."],
-  ["Smart collections", "Ciphra sorts uploads into usable folders automatically, so the dashboard feels organized from the first file."],
-  ["Recovery layer", "Verified email flows handle account recovery without pretending the vault password can be magically recovered."],
+  ["Any file, neatly placed", "Upload photos, PDFs, documents, archives, code, audio, video, and the vault sorts them into familiar collections."],
+  ["Passwords beside files", "Save website logins with encrypted usernames, passwords, and notes under the same unlock experience."],
+  ["Search without friction", "Filter by name, type, owner, sharing state, or size so private work stays easy to find."],
+  ["Recovery that makes sense", "Verified email supports account recovery while the vault password remains the final privacy boundary."],
 ];
 
 const workflow = [
@@ -43,7 +43,7 @@ const securityLayers = [
   { icon: <KeyRound />, label: "Secrets", detail: "Web credentials sealed with the same vault model" },
 ];
 
-const liveSignals = ["client-side crypto", "typed storage", "secure sharing", "passwords"];
+const liveSignals = ["client-side encryption", "typed storage", "secure sharing", "password locker"];
 
 export default function Landing() {
   return (
@@ -62,12 +62,12 @@ export default function Landing() {
         </nav>
 
         <div className="hero-copy">
-          <p className="eyebrow">Claim-ready free domain: {BRAND_DOMAIN}</p>
+          <p className="eyebrow">Encrypted personal cloud</p>
           <h1>{BRAND_NAME}</h1>
           <p>{BRAND_TAGLINE}</p>
           <p className="hero-detail">
-            A private cloud workspace for real life: files, passwords, sharing, account recovery, type-aware folders,
-            and a vault unlock model that keeps private keys out of casual reach.
+            A calm command center for the private pieces of life: type-aware file storage, encrypted website logins,
+            secure sharing, verified recovery, and a vault unlock that keeps sensitive keys out of reach.
           </p>
           <div className="hero-actions">
             <Link className="primary-button" to="/signup">
@@ -85,7 +85,7 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="hero-stage" aria-label="Ciphra product preview">
+        <div className="hero-stage" aria-label="Privora product preview">
           <div className="stage-grid" aria-hidden="true" />
           <div className="vault-prism" aria-hidden="true">
             <span className="prism-face prism-front" />
@@ -138,7 +138,7 @@ export default function Landing() {
         </article>
         <article>
           <Boxes size={20} aria-hidden="true" />
-          <span>1 TB-ready storage model</span>
+          <span>Type-aware collections</span>
         </article>
         <article>
           <KeyRound size={20} aria-hidden="true" />
@@ -152,17 +152,17 @@ export default function Landing() {
 
       <section className="experience-band">
         <div className="experience-copy">
-          <p className="eyebrow">Not another plain file bucket</p>
-          <h2>A cinematic vault that still behaves like a serious daily tool.</h2>
+          <p className="eyebrow">Designed for daily privacy</p>
+          <h2>A vault that feels focused, fast, and quietly premium.</h2>
           <p>
-            Ciphra feels like a secure command center on the surface, but underneath it keeps the practical pieces users expect:
-            typed folders, quick search, graceful empty states, password storage, sharing, recovery, dark mode, and responsive layouts.
+            Privora gives private files and saved credentials one clean home with typed folders, quick search,
+            graceful empty states, encrypted sharing, recovery flows, dark mode, and responsive layouts.
           </p>
         </div>
-        <div className="experience-console" aria-label="Ciphra workflow view">
+        <div className="experience-console" aria-label="Privora workflow view">
           <div className="console-topline">
             <span />
-            <strong>Live vault route</strong>
+            <strong>Protection flow</strong>
             <Zap size={16} aria-hidden="true" />
           </div>
           <div className="route-map" aria-hidden="true">
@@ -185,8 +185,8 @@ export default function Landing() {
 
       <section className="landing-band">
         <div>
-          <p className="eyebrow">What users get</p>
-          <h2>One place for the private things people usually scatter everywhere.</h2>
+          <p className="eyebrow">Private by default</p>
+          <h2>One place for the files and logins that should never feel scattered.</h2>
           <p className="muted">{BRAND_SHORT_COPY}</p>
         </div>
         <div className="feature-strip">
@@ -227,10 +227,10 @@ export default function Landing() {
           <span className="geometry-core"><Orbit size={48} /></span>
         </div>
         <div>
-          <p className="eyebrow">The uncommon feature</p>
-          <h2>Files and passwords share one private mental model.</h2>
+          <p className="eyebrow">Unified vault model</p>
+          <h2>Files and passwords unlock through one private workspace.</h2>
           <p>
-            Most demos split storage and credentials into separate little toys. Ciphra makes them feel like one protected workspace:
+            File storage and credentials usually live in separate tools. Privora brings them into one protected workspace:
             unlock once, manage both, recover the account safely, and keep the vault password as the final gate.
           </p>
         </div>
@@ -250,7 +250,7 @@ export default function Landing() {
         <Sparkles size={26} aria-hidden="true" />
         <h2>Your vault should look as serious as the things inside it.</h2>
         <p>
-          Ciphra gives users a polished place to upload, organize, unlock, and protect what matters.
+          Privora gives users a polished place to upload, organize, unlock, and protect what matters.
         </p>
         <Link className="primary-button" to="/signup">Open the vault</Link>
       </section>

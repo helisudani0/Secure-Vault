@@ -140,7 +140,7 @@ if DB_ENGINE == 'django.db.backends.postgresql':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', 'ciphra'),
+            'NAME': os.getenv('DB_NAME', 'privora'),
             'USER': os.getenv('DB_USER', 'postgres'),
             'PASSWORD': os.getenv('DB_PASSWORD', ''),
             'HOST': os.getenv('DB_HOST', 'localhost'),
@@ -231,7 +231,7 @@ else:
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-            'LOCATION': 'ciphra-local-cache',
+            'LOCATION': 'privora-local-cache',
         }
     }
 
@@ -275,7 +275,7 @@ MAX_FILES_PER_USER = int(os.getenv('MAX_FILES_PER_USER', 1000))
 
 # Email / frontend links
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:5173')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'Ciphra <noreply@localhost>')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'Privora <noreply@localhost>')
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', '25'))
@@ -339,7 +339,7 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': False,
         },
-        'ciphra': {
+        'privora': {
             'handlers': ['console', 'file'],
             'level': 'DEBUG' if DEBUG else 'INFO',
             'propagate': False,

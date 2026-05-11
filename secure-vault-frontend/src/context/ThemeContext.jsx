@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 const ThemeContext = createContext(null);
 
 function getPreferredTheme() {
-  const saved = localStorage.getItem("ciphra_theme");
+  const saved = localStorage.getItem("privora_theme");
   if (saved === "light" || saved === "dark") return saved;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
@@ -14,7 +14,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
-    localStorage.setItem("ciphra_theme", theme);
+    localStorage.setItem("privora_theme", theme);
   }, [theme]);
 
   const value = useMemo(

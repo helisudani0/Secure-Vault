@@ -19,8 +19,8 @@ if (-not $Yes) {
   }
 }
 
-$dbUser = if ($env:DB_USER) { $env:DB_USER } else { "ciphra" }
-$dbName = if ($env:DB_NAME) { $env:DB_NAME } else { "ciphra" }
+$dbUser = if ($env:DB_USER) { $env:DB_USER } else { "privora" }
+$dbName = if ($env:DB_NAME) { $env:DB_NAME } else { "privora" }
 
 Get-Content -Raw -LiteralPath $InputFile | docker compose exec -T $Service psql `
   --username $dbUser `

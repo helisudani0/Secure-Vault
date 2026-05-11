@@ -1,4 +1,4 @@
-# Generated for Ciphra encrypted password entries
+# Generated for Privora encrypted password entries
 
 import uuid
 
