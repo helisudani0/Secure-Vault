@@ -3,17 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 const RouterContext = createContext(null);
 const BASE_PATH = (import.meta.env.VITE_BASE_PATH || "/").replace(/\/$/, "") || "/";
 const normalizedBase = BASE_PATH === "/" ? "/" : `${BASE_PATH}/`;
-
-// Handle GitHub Pages SPA redirect from 404.html
-function handleInitialRedirect() {
-  const params = new URLSearchParams(window.location.search);
-  const redirect = params.get("redirect");
-  if (redirect) {
-    window.history.replaceState(null, "", redirect);
-    return stripBase(redirect);
-  }
-  return stripBase(window.location.pathname);
-}
+let hasHandledInitialRedirect = false;
 
 function stripBase(pathname) {
   if (normalizedBase !== "/" && pathname.startsWith(normalizedBase)) {
@@ -31,8 +21,21 @@ function addBase(path) {
 }
 
 function readLocation() {
+  let pathname = window.location.pathname;
+  
+  // Handle GitHub Pages SPA redirect from 404.html (only once)
+  if (!hasHandledInitialRedirect) {
+    hasHandledInitialRedirect = true;
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect");
+    if (redirect) {
+      pathname = redirect;
+      window.history.replaceState(null, "", redirect);
+    }
+  }
+  
   return {
-    pathname: handleInitialRedirect(),
+    pathname: stripBase(pathname),
     search: window.location.search,
     hash: window.location.hash,
     state: window.history.state,
