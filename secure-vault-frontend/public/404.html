@@ -20,7 +20,7 @@
       }
       
       // Redirect to index.html with the original path as query param
-      var redirect = (basePath || '/') + 'index.html?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
+      var redirect = (basePath ? basePath + '/' : '/') + 'index.html?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
       window.location.replace(redirect);
     </script>
   </head>
