@@ -7,7 +7,8 @@ let hasHandledInitialRedirect = false;
 
 function stripBase(pathname) {
   if (normalizedBase !== "/" && pathname.startsWith(normalizedBase)) {
-    return pathname.slice(normalizedBase.length) || "/";
+    const stripped = pathname.slice(normalizedBase.length);
+    return "/" + stripped;
   }
   if (normalizedBase !== "/" && pathname === BASE_PATH) {
     return "/";
