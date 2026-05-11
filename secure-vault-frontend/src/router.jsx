@@ -1,10 +1,27 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const RouterContext = createContext(null);
+const BASE_PATH = (import.meta.env.VITE_BASE_PATH || "/").replace(/\/$/, "") || "/";
+const normalizedBase = BASE_PATH === "/" ? "/" : BASE_PATH;
+
+function stripBase(pathname) {
+  if (normalizedBase !== "/" && pathname.startsWith(`${normalizedBase}/`)) {
+    return pathname.slice(normalizedBase.length) || "/";
+  }
+  if (normalizedBase !== "/" && pathname === normalizedBase) {
+    return "/";
+  }
+  return pathname;
+}
+
+function addBase(path) {
+  if (normalizedBase === "/" || !path.startsWith("/")) return path;
+  return `${normalizedBase}${path.slice(1)}`;
+}
 
 function readLocation() {
   return {
-    pathname: window.location.pathname,
+    pathname: stripBase(window.location.pathname),
     search: window.location.search,
     hash: window.location.hash,
     state: window.history.state,
@@ -26,7 +43,8 @@ export function RouterProvider({ children }) {
       return;
     }
 
-    const nextUrl = new URL(to, window.location.origin);
+    const destination = typeof to === "string" && to.startsWith("/") ? addBase(to) : to;
+    const nextUrl = new URL(destination, window.location.origin);
     const state = options.state || null;
     if (options.replace) {
       window.history.replaceState(state, "", nextUrl);
@@ -62,6 +80,7 @@ export function Navigate({ to, replace = false, state = null }) {
 
 export function Link({ to, children, replace = false, state = null, onClick, ...props }) {
   const navigate = useNavigate();
+  const href = typeof to === "string" && to.startsWith("/") ? addBase(to) : to;
 
   function handleClick(event) {
     onClick?.(event);
@@ -81,7 +100,7 @@ export function Link({ to, children, replace = false, state = null, onClick, ...
   }
 
   return (
-    <a href={to} onClick={handleClick} {...props}>
+    <a href={href} onClick={handleClick} {...props}>
       {children}
     </a>
   );
